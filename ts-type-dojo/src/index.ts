@@ -58,3 +58,14 @@ type Exclude1<T, U> = T extends U ? never : T;
 // Extract自力で再実装
 // TからUだけを取り出す Union型の操作
 type Extract1<T, U> = T extends U ? T : never;
+
+// ReturnType自力で再実装
+// inferはextendsの中でしか使えない。inferはその関数の戻り値型を R として抜き出す
+type ReturnType1<T extends (...args: any) => any> =
+    T extends (...args: any) => infer R ? R : any;
+
+type Parameters1<T extends (...args: any) => any> =
+    T extends (...args: infer P) => any ? P : never;
+
+const add = (a: number, b: number) => a + b;
+type P = Parameters1<typeof add>;
