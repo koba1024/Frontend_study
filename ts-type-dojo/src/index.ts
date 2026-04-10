@@ -1,6 +1,8 @@
 //ここで学んだこと。
 //Generics の基礎と応用
 // mapping modifier(?や-?)
+// inferの使い方
+// 
 
 // Partial自力で再実装
 type Partial1<T> = {
@@ -69,3 +71,13 @@ type Parameters1<T extends (...args: any) => any> =
 
 const add = (a: number, b: number) => a + b;
 type P = Parameters1<typeof add>;
+
+// DeepReadonly自力で再実装
+// readonlyに変える
+// RegExp←正規表現の型
+
+type Primitive = string | number | boolean | bigint | symbol | null | undefined;
+type DeepReadonly<T> =
+    T extends Primitive | Function | Date | Error | RegExp
+    ? T
+    : { readonly [K in keyof T]: DeepReadonly<T[K]> };
