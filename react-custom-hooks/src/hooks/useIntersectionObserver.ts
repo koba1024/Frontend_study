@@ -1,7 +1,7 @@
 import { useEffect, type RefObject } from "react";
 
 export function useIntersectionObserver(
-    refs: RefObject<HTMLElement>[],
+    refs: RefObject<HTMLElement | null>[],
     callback: (entries: IntersectionObserverEntry[]) => void,
     options?: IntersectionObserverInit,
 ): void {
