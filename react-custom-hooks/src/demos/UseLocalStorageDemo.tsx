@@ -16,7 +16,7 @@ export default function UseLocalStorageDemo() {
 		<div>
 			<label>保存したい値を入力してください</label>
 			<input
-				type="text"
+				type="number"
 				value={inputValue}
 				onChange={(e) => setInputValue(e.target.value)}
 			/>
