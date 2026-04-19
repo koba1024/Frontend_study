@@ -17,7 +17,7 @@ type TodoStore = {
     reorderTodos: (newTodos: Todo[]) => void;
 }
 
-export const useTodoStore = create<TodoStore>(
+export const useTodoStore = create<TodoStore>()(
     persist(
         (set) => ({
             todos: [],

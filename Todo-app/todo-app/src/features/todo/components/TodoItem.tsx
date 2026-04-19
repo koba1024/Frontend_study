@@ -29,8 +29,8 @@ export default function TodoItem(props: TodoItemProps) {
 							{props.todo.title}
 						</span>
 						<span className="flex-1 text-gray-900">
-							{todo.deadline && <span>📅 {todo.deadline}</span>}
-							{todo.priority}
+							{todo.deadline && <span>📅 {todo.deadline} </span>}
+							優先度: {todo.priority}
 							{todo.tags.map((tag) => (
 								<div key={tag}>🏷{tag}</div>
 							))}

@@ -4,7 +4,7 @@ export type Todo = {
     title: string;
     id: string;
     priority: Priority;
-    deadline: string | null;
+    deadline: string;
     completed: boolean;
     tags: string[];
 }

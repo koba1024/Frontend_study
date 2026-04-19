@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { Todo } from "../types";
 import { useTodoStore } from "../store";
 import TodoItem from "./TodoItem";
+import AddTodoModal from "./AddTodoModel";
 
 export default function TodoList() {
 	const [editingTodo, setEditingTodo] = useState<Todo | null>(null);
@@ -29,6 +30,12 @@ export default function TodoList() {
 			<div>
 				<button onClick={() => setIsAddModalOpen(true)}>+ 追加</button>
 			</div>
+			{isAddModalOpen && (
+				<AddTodoModal
+					isOpen={isAddModalOpen}
+					onClose={() => setIsAddModalOpen(false)}
+				/>
+			)}
 		</>
 	);
 }
