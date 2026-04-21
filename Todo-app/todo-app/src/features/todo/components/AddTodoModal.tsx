@@ -15,7 +15,7 @@ export default function AddTodoModal(props: AddTodoModalProps) {
 	const addTodo = useTodoStore((state) => state.addTodo);
 
 	const handleAddTodo = () => {
-		const parsetTags = tagInput
+		const parsedTags = tagInput
 			.split(",")
 			.map((tag) => tag.trim())
 			.filter((tag) => tag !== "");
@@ -24,7 +24,7 @@ export default function AddTodoModal(props: AddTodoModalProps) {
 			title,
 			priority,
 			deadline,
-			tags: parsetTags,
+			tags: parsedTags,
 		});
 
 		setTitle("");
