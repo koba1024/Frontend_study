@@ -8,12 +8,12 @@ type CompletedTodoItemProps = {
 	onToggleCompleted: (id: string) => void;
 };
 
-export default function BaseTodoItem(props: CompletedTodoItemProps) {
-	const todo = props.todo;
+export default function CompletedTodoItem(props: CompletedTodoItemProps) {
+	const { todo, onToggleCompleted } = props;
 	return (
 		<div className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/70 transition-colors group">
 			<button
-				onClick={() => props.onToggleCompleted(todo.id)}
+				onClick={() => onToggleCompleted(todo.id)}
 				className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 border-gray-400 transition-colors hover:border-blue-500"
 			>
 				{todo.completed && (
