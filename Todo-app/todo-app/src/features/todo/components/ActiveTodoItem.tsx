@@ -1,4 +1,6 @@
 import type { Todo } from "../types";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 type ActiveTodoItemProps = {
 	todo: Todo;
@@ -9,8 +11,19 @@ type ActiveTodoItemProps = {
 
 export default function ActiveTodoItem(props: ActiveTodoItemProps) {
 	const { todo, onToggleCompleted, onEdit, onDelete } = props;
+	const { attributes, listeners, setNodeRef, transform, transition } =
+		useSortable({ id: todo.id });
+	const style = {
+		transform: CSS.Transform.toString(transform),
+		transition,
+	};
+
 	return (
-		<div className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/70 transition-colors group">
+		<div
+			ref={setNodeRef}
+			style={style}
+			className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/70 transition-colors group"
+		>
 			<button
 				onClick={() => onToggleCompleted(todo.id)}
 				className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border-2 border-gray-400 transition-colors hover:border-blue-500"
@@ -19,7 +32,7 @@ export default function ActiveTodoItem(props: ActiveTodoItemProps) {
 					<span className="h-2.5 w-2.5 rounded-full bg-blue-500"></span>
 				)}
 			</button>
-			<div className="flex flex-col">
+			<div className="flex flex-col" {...attributes} {...listeners}>
 				<span className="flex-1 text-gray-900">{props.todo.title}</span>
 				<span className="flex-1 text-gray-900">
 					{todo.deadline && <span>📅 {todo.deadline} </span>}

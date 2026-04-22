@@ -1,13 +1,16 @@
 import { useState } from "react";
 import type { Todo } from "../types";
 import { useTodoStore } from "../store";
-import TodoItem from "./CompletedTodoItem";
 import AddTodoModal from "./AddTodoModal";
 import EditTodoModal from "./EditTodoModal";
-import { DndContext } from "@dnd-kit/core";
-import { SortableContext } from "@dnd-kit/sortable";
-import BaseTodoItem from "./CompletedTodoItem";
+import { DndContext, closestCenter, type DragEndEvent } from "@dnd-kit/core";
+import {
+	SortableContext,
+	verticalListSortingStrategy,
+	arrayMove,
+} from "@dnd-kit/sortable";
 import ActiveTodoItem from "./ActiveTodoItem";
+import CompletedTodoItem from "./CompletedTodoItem";
 
 export default function TodoList() {
 	const [editingTodo, setEditingTodo] = useState<Todo | null>(null);
@@ -20,12 +23,31 @@ export default function TodoList() {
 	const activeTodos = todos.filter((todo) => !todo.completed);
 	const completedTodos = todos.filter((todo) => todo.completed);
 
+	const reorderTodos = useTodoStore((state) => state.reorderTodos);
+
+	const handleDragEnd = (event: DragEndEvent) => {
+		const { active, over } = event;
+
+		if (!over || active.id === over.id) return;
+
+		const oldIndex = todos.findIndex((todo) => todo.id === active.id);
+		const newIndex = todos.findIndex((todo) => todo.id === over.id);
+
+		reorderTodos(arrayMove(todos, oldIndex, newIndex));
+	};
+
 	return (
 		<>
 			<div>
 				<p>未完了</p>
-				<DndContext>
-					<SortableContext items={activeTodos.map((todo) => todo.id)}>
+				<DndContext
+					collisionDetection={closestCenter}
+					onDragEnd={handleDragEnd}
+				>
+					<SortableContext
+						items={activeTodos.map((todo) => todo.id)}
+						strategy={verticalListSortingStrategy}
+					>
 						{activeTodos.map((todo) => (
 							<ActiveTodoItem
 								key={todo.id}
@@ -41,7 +63,7 @@ export default function TodoList() {
 			<div>
 				<p>完了</p>
 				{completedTodos.map((todo) => (
-					<BaseTodoItem
+					<CompletedTodoItem
 						key={todo.id}
 						todo={todo}
 						onToggleCompleted={onToggleCompleted}

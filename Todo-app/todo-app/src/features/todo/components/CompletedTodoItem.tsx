@@ -21,7 +21,7 @@ export default function CompletedTodoItem(props: CompletedTodoItemProps) {
 				)}
 			</button>
 			<div className="flex flex-col">
-				<span className="flex-1 text-gray-900">{props.todo.title}</span>
+				<span className="flex-1 text-gray-900">{todo.title}</span>
 				<span className="flex-1 text-gray-900">
 					{todo.deadline && <span>📅 {todo.deadline} </span>}
 					優先度: {todo.priority}
