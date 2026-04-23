@@ -1,121 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+	return (
+		<div className="m-3">
+			<h1>UIトレーニング</h1>
+			<section className="flex gap-4 mb-5">
+				<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+					登録
+				</button>
+				<button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+					登録
+				</button>
+				<button className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-full font-bold">
+					削除
+				</button>
+			</section>
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+			<section className="max-w-md mb-3">
+				<div className="flex flex-col gap-4 border p-6 shadow-lg hover:bg-gray-50 transition-colors">
+					<div>
+						<h2>タイトル</h2>
+						<p>説明</p>
+					</div>
+					<div className="flex justify-end">
+						<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+							登録
+						</button>
+					</div>
+				</div>
+			</section>
+			<section className="max-w-md mb-3">
+				<div className="flex gap-2">
+					<span className="inline-flex items-center gap-1 bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full">
+						<span className="h-2 w-2 rounded-full bg-red-500"></span>
+						高優先度
+					</span>
+					<span className="inline-flex items-center gap-1 bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded-full">
+						<span className="h-2 w-2 bg-yellow-500 rounded-full"></span>
+						中優先度
+					</span>
+					<span className="inline-flex gap-1 items-center py-1 px-2 text-sm font-medium rounded-full bg-green-100 text-green-700">
+						<span className="w-2 h-2 bg-green-500 rounded-full"></span>
+						低優先度
+					</span>
+				</div>
+			</section>
+			<section className="max-w-md mb-3">
+				<div className="border p-4">
+					<div className="flex flex-col gap-2">
+						<h2>タイトル</h2>
+						<p>説明</p>
+						<p>
+							<span className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-2 py-1 text-sm font-medium rounded-full">
+								<span className="bg-red-500 rounded-full w-2 h-2"></span>
+								高優先度
+							</span>
+						</p>
+					</div>
+					<div className="flex justify-end">
+						<button className="text-white bg-blue-500 hover:bg-blue-700 font-bold px-4 py-2 rounded-full">
+							登録
+						</button>
+					</div>
+				</div>
+			</section>
+		</div>
+	);
 }
 
-export default App
+export default App;
