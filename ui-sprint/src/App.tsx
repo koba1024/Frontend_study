@@ -64,6 +64,31 @@ function App() {
 					</div>
 				</div>
 			</section>
+			<section className="flex flex-col gap-4 mb-3">
+				<div className="flex flex-col gap-1">
+					<label htmlFor="title">タイトル入力</label>
+					<input
+						className="border rounded px-3 py-2 w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						type="text"
+						name="title"
+						id="title"
+					/>
+				</div>
+				<div className="flex flex-col gap-1">
+					<label htmlFor="description">説明入力</label>
+					<input
+						className="border rounded px-3 py-2 w-80 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						type="text"
+						name="description"
+						id="description"
+					/>
+				</div>
+				<div>
+					<button className="text-white bg-blue-500 hover:bg-blue-700 font-bold px-4 py-2 rounded-full">
+						登録
+					</button>
+				</div>
+			</section>
 		</div>
 	);
 }
