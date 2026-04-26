@@ -7,12 +7,6 @@ function App() {
 	const [open, setOpen] = useState(false);
 
 	const [status, setStatus] = useState<Status>("a");
-	const tabState = {
-		a: "a",
-		b: "b",
-		c: "c",
-	};
-	let text = tabState[status];
 
 	return (
 		<div className="m-3">
@@ -126,19 +120,19 @@ function App() {
 				<div className="inline-flex">
 					<button
 						onClick={() => setStatus("a")}
-						className={`font-bold py-2 px-4 rounded-l ${status === "a" ? "bg-blue-500 text-white" : "bg-gray-300 hover: bg-gray-400 text-gray-800"}`}
+						className={`font-bold py-2 px-4 rounded-l ${status === "a" ? "bg-blue-500 text-white" : "bg-gray-300 hover:bg-gray-400 text-gray-800"}`}
 					>
 						A
 					</button>
 					<button
 						onClick={() => setStatus("b")}
-						className={`font-bold py-2 px-4 ${status === "b" ? "bg-blue-500 text-white" : "bg-gray-300 hover: bg-gray-400 text-gray-800"}`}
+						className={`font-bold py-2 px-4 ${status === "b" ? "bg-blue-500 text-white" : "bg-gray-300 hover:bg-gray-400 text-gray-800"}`}
 					>
 						B
 					</button>
 					<button
 						onClick={() => setStatus("c")}
-						className={`font-bold py-2 px-4 rounded-r ${status === "c" ? "bg-blue-500 text-white" : "bg-gray-300 hover: bg-gray-400 text-gray-800"}`}
+						className={`font-bold py-2 px-4 rounded-r ${status === "c" ? "bg-blue-500 text-white" : "bg-gray-300 hover:bg-gray-400 text-gray-800"}`}
 					>
 						C
 					</button>
