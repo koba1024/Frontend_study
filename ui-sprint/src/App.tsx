@@ -1,8 +1,19 @@
 import { useState } from "react";
 import "./App.css";
 
+type Status = "a" | "b" | "c";
+
 function App() {
 	const [open, setOpen] = useState(false);
+
+	const [status, setStatus] = useState<Status>("a");
+	const tabState = {
+		a: "a",
+		b: "b",
+		c: "c",
+	};
+	let text = tabState[status];
+
 	return (
 		<div className="m-3">
 			<h1>UIトレーニング</h1>
@@ -103,13 +114,38 @@ function App() {
 					</div>
 				</section>
 			)}
-			<section>
+			<section className="mb-3">
 				<button
 					onClick={() => setOpen(true)}
 					className="text-white bg-blue-500 hover:bg-blue-700 font-bold px-4 py-2 rounded-full"
 				>
 					開く
 				</button>
+			</section>
+			<section>
+				<div className="inline-flex">
+					<button
+						onClick={() => setStatus("a")}
+						className={`font-bold py-2 px-4 rounded-l ${status === "a" ? "bg-blue-500 text-white" : "bg-gray-300 hover: bg-gray-400 text-gray-800"}`}
+					>
+						A
+					</button>
+					<button
+						onClick={() => setStatus("b")}
+						className={`font-bold py-2 px-4 ${status === "b" ? "bg-blue-500 text-white" : "bg-gray-300 hover: bg-gray-400 text-gray-800"}`}
+					>
+						B
+					</button>
+					<button
+						onClick={() => setStatus("c")}
+						className={`font-bold py-2 px-4 rounded-r ${status === "c" ? "bg-blue-500 text-white" : "bg-gray-300 hover: bg-gray-400 text-gray-800"}`}
+					>
+						C
+					</button>
+				</div>
+				{status === "a" && <div>Aが選択されました</div>}
+				{status === "b" && <div>Bが選択されました</div>}
+				{status === "c" && <div>Cが選択されました</div>}
 			</section>
 		</div>
 	);
