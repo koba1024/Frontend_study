@@ -1,6 +1,8 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+	const [open, setOpen] = useState(false);
 	return (
 		<div className="m-3">
 			<h1>UIトレーニング</h1>
@@ -88,6 +90,26 @@ function App() {
 						登録
 					</button>
 				</div>
+			</section>
+			{open && (
+				<section className="fixed inset-0 bg-black/50 flex items-center justify-center">
+					<div className="bg-white w-80 flex justify-center items-center flex-col p-5 rounded-lg">
+						<button
+							onClick={() => setOpen(false)}
+							className="text-white bg-blue-500 hover:bg-blue-700 font-bold px-4 py-2 rounded-full"
+						>
+							閉じる
+						</button>
+					</div>
+				</section>
+			)}
+			<section>
+				<button
+					onClick={() => setOpen(true)}
+					className="text-white bg-blue-500 hover:bg-blue-700 font-bold px-4 py-2 rounded-full"
+				>
+					開く
+				</button>
 			</section>
 		</div>
 	);
